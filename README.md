@@ -33,13 +33,27 @@ target_link_libraries(your_app PRIVATE galay-mail::galay-mail)
 
 ## SMTP
 
+Async network calls must run on a `galay::kernel::IOScheduler`. For small
+tools, build the runtime with an IO scheduler and no compute scheduler, or
+schedule the task onto `runtime.getNextIOScheduler()`.
+
 ```cpp
+auto runtime = galay::kernel::RuntimeBuilder()
+                   .ioSchedulerCount(1)
+                   .computeSchedulerCount(0)
+                   .build();
 auto client = galay::mail::async::SmtpClientBuilder().build();
 auto connected = co_await client.connect("smtp+starttls://user:pass@mail.example.com:587");
 auto sent = co_await client.sendMail(
     "sender@example.com",
     {"receiver@example.com"},
     "Subject: hello\r\n\r\nbody\r\n");
+```
+
+For 163 implicit TLS SMTP, use a URL like:
+
+```text
+smtps://galay_center%40163.com:<auth-code>@smtp.163.com:465?verify_peer=true&server_name=smtp.163.com
 ```
 
 ## POP3

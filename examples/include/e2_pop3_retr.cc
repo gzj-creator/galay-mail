@@ -30,7 +30,10 @@ galay::kernel::Task<void> run()
 
 int main()
 {
-    galay::kernel::Runtime runtime;
+    auto runtime = galay::kernel::RuntimeBuilder()
+                       .ioSchedulerCount(1)
+                       .computeSchedulerCount(0)
+                       .build();
     runtime.blockOn(run());
     return 0;
 }
