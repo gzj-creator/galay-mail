@@ -16,6 +16,7 @@
 - 示例程序统一通过 `RuntimeBuilder` 显式配置 IO scheduler，避免异步网络调用缺少 IO 调度器。
 - SMTP 示例返回明确进程状态码，并补充负响应、异常发送结果和连接关闭处理。
 - README 补充异步网络调用所需 runtime 配置，并加入 163 implicit TLS SMTP URL 示例。
+- CMake 项目版本号对齐到 `0.2.0`，便于上层 bundle 校验 manifest 版本矩阵。
 
 ## [v0.1.0] - 2026-05-12
 

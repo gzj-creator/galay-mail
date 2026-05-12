@@ -15,9 +15,10 @@
 ## v0.2.0 - 2026-05-12
 
 - 版本级别：中版本（minor）
-- Git 提交消息：`feat: 增强邮件客户端真实环境示例`
+- Git 提交消息：`fix: 对齐 galay-mail 版本元数据`
 - Git Tag：`v0.2.0`
 - 自述摘要：
   - 增强真实 SMTP 发送示例，生成带本地时间戳的测试邮件并输出服务端响应。
   - 示例程序统一通过 `RuntimeBuilder` 显式配置 IO scheduler，避免异步网络调用缺少 IO 调度器。
   - README 补充异步网络调用所需 runtime 配置，并加入 163 implicit TLS SMTP URL 示例。
+  - CMake 项目版本号对齐到 `0.2.0`，便于上层 bundle 校验 manifest 版本矩阵。
